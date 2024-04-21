@@ -70,8 +70,11 @@ class LayoutController {
                 view = self.view(from: object)
             }
 
+            view.wantsLayer = true
+            view.layer?.cornerRadius = object.cornerRadius ?? 0
+            view.layer?.masksToBounds = true
+
             if self.shouldHighlightSelectedLayer && object == layers[self.highlightLayer] {
-                view.wantsLayer = true
                 view.layer?.borderColor = NSColor.red.cgColor
                 view.layer?.borderWidth = 2.0
             }
